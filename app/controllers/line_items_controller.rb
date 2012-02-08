@@ -42,12 +42,15 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(:product => product)
+   # @line_item = @cart.line_items.build(:product => product)
+    @line_item = @cart.line_items.build(product: product)
 
-  #  @line_item = LineItem.new(params[:line_item])
+
 
     respond_to do |format|
       if @line_item.save
+        #dobavili 
+        session[:counter] = 0
         format.html { redirect_to(@line_item.cart, :notice => 'Line item was successfully created.') }
         format.xml  { render :xml => @line_item, :status => :created, :location => @line_item }
       else
@@ -56,6 +59,13 @@ class LineItemsController < ApplicationController
       end
     end
   end
+  
+    
+
+        
+      #  format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+       # format.json { render json: @line_item, status: :created, location: @line_item }
+   
 
   # PUT /line_items/1
   # PUT /line_items/1.xml
@@ -84,4 +94,11 @@ class LineItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def add_to_cart
+    @count = session[:counter] = 0
+  end
+  
+  
+  
 end

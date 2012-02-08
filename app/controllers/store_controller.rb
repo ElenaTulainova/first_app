@@ -2,6 +2,7 @@ class StoreController < ApplicationController
   def index
     @products = Product.all
     @count = increment_counter
+
   end
 
   def increment_counter
@@ -10,4 +11,5 @@ class StoreController < ApplicationController
     end
     session[:counter] += 1
   end
+
 end
