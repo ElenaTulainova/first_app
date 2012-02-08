@@ -60,13 +60,6 @@ class LineItemsController < ApplicationController
     end
   end
   
-    
-
-        
-      #  format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
-       # format.json { render json: @line_item, status: :created, location: @line_item }
-   
-
   # PUT /line_items/1
   # PUT /line_items/1.xml
   def update

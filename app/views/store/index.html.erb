@@ -4,7 +4,9 @@
 </p>
 <% end %> <h1>Your Pragmatic Catalog</h1>
 
-<%= pluralize @count, 'time   you have to do something'  %> 
+<% if @count > 5 -%>
+  You've viewed this page <%= pluralize(@count,"time") %>, it is time to buy
+<% end -%>
 
 <% @products.each do |product| %>
 <div class="entry" >
